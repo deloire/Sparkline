@@ -1,0 +1,32 @@
+<main th:fragment="main">
+    <main class="container">
+        <div class="form-container">
+            <img class="logo" src="/assets/logo.png" alt="Logo">
+
+            <div class="input-group">
+                <input type="text" id="taskDescription" placeholder="Enter a short description of the task">
+            </div>
+
+            <div class="input-group">
+                <select id="currency">
+                    <option value="" disabled selected>Select payment method</option>
+                    <option value="usdt">USDT</option>
+                    <option value="btc">BTC</option>
+                    <option value="rub">RUB</option>
+                    <option value="ton">TON</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <input type="number" id="budget" placeholder="Enter your budget (in dollars)">
+            </div>
+
+            <div class="input-group">
+                <textarea id="detailedTask" rows="5" placeholder="Enter detailed technical specification"></textarea>
+            </div>
+
+            <button type="button" id="submitButton">Confirm</button>
+        </div>
+    </main>
+    <script src="/script/main.js"></script>
+</main>
