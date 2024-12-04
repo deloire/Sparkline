@@ -1,6 +1,5 @@
 const tg = window.Telegram.WebApp;
 
-
 if (window.location.pathname === '/') {
     tg.BackButton.hide();
 } else {
@@ -95,4 +94,36 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.Telegram && window.Telegram.WebApp) {
         window.Telegram.WebApp.ready();
     }
+
+    // Новый код для страницы подтверждения заказа
+    if (currentPage === '/order-handling') {
+        // Анимация галочки
+        const checkmark = document.querySelector('.checkmark__check');
+        const circle = document.querySelector('.checkmark__circle');
+
+        if (checkmark && circle) {
+            checkmark.style.strokeDasharray = '48';
+            checkmark.style.strokeDashoffset = '48';
+            circle.style.strokeDasharray = '166';
+            circle.style.strokeDashoffset = '166';
+
+            checkmark.style.transition = 'stroke-dashoffset 0.5s ease-in-out 0.3s';
+            circle.style.transition = 'stroke-dashoffset 0.5s ease-in-out';
+
+            setTimeout(() => {
+                circle.style.strokeDashoffset = '0';
+                checkmark.style.strokeDashoffset = '0';
+            }, 100);
+        }
+
+        // Обработка клика по ссылке "Сделать еще заказ"
+        const newOrderLink = document.getElementById('newOrderLink');
+        if (newOrderLink) {
+            newOrderLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = '/';
+            });
+        }
+    }
 });
+
