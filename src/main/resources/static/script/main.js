@@ -1,10 +1,14 @@
 const tg = window.Telegram.WebApp;
 
-tg.BackButton.show();
 
-tg.BackButton.onClick(() => {
-    window.history.back(); // Возврат на предыдущую страницу
-});
+if (window.location.pathname === '/') {
+    tg.BackButton.hide();
+} else {
+    tg.BackButton.show();
+    tg.BackButton.onClick(() => {
+        window.history.back();
+    });
+}
 
 // Общая функция для отправки формы
 function submitForm(event, endpoint) {
