@@ -2,10 +2,7 @@ package studio.sparkline.Sparkline.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import studio.sparkline.Sparkline.Models.Orders;
 import studio.sparkline.Sparkline.Service.OrderService;
 
@@ -22,7 +19,8 @@ public class OrderWebParsingController {
 
     @PostMapping("/order-parsing")
     @ResponseBody
-    public Orders createParsingOrder(@RequestBody Orders order) {
+    public Orders createParsingOrder(@RequestBody Orders order, @RequestParam("telegramName") String telegramName) {
+        order.setTelegramName(telegramName);
         return orderService.saveOrder(order);
     }
 

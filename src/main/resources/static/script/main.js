@@ -19,7 +19,7 @@ function submitForm(event, endpoint) {
     const detailedTask = document.getElementById("detailedTask").value;
 
     if (!taskDescription || !currency || !budget || !detailedTask) {
-        alert('Пожалуйста, заполните все поля');
+        alert('Not all fields are filled in or something is filled in incorrectly!');
         return;
     }
 
@@ -27,10 +27,11 @@ function submitForm(event, endpoint) {
         description: taskDescription,
         currency: currency,
         budget: parseFloat(budget),
-        detailedTask: detailedTask
+        detailedTask: detailedTask,
+        telegramName: 'https://t.me/' + tg.initDataUnsafe.user.username
     };
 
-    fetch(endpoint, {
+    fetch(endpoint + '?telegramName=' + taskData.telegramName, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -50,7 +51,7 @@ function submitForm(event, endpoint) {
         }
 
         // Переход на другую страницу
-        window.location.href = '/order-handling'; // Замените '/new-page' на нужный URL
+        window.location.href = '/order-handling';
 
         // Очистка формы после отправки (если необходимо)
         document.querySelector('.form-container').reset();
