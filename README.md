@@ -20,3 +20,11 @@ This project is a Telegram bot developed using Java, Spring Boot, and PostgreSQL
 - Thymeleaf (for the web interface)
 - HTML/CSS
 - JavaScript
+
+## Installation
+
+1. Clone the repository
+2. Set up the PostgreSQL database in yours application.properties
+3. Go to BotFather and create your bot token
+4. Build the project using Maven
+5. Run the application
